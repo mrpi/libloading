@@ -38,3 +38,6 @@ int main()
    odbc.SQLAllocEnv(&henv);
 };
 ```
+## License
+
+Boost Software License - Version 1.0
