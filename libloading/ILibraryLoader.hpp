@@ -23,26 +23,27 @@ namespace libloading
 class ILibraryLoader
 {
 public:
-   typedef int (LIBL_STDCALL_T *FuncSig)();
+   typedef int(LIBL_STDCALL_T* FuncSig)();
    union Alias
    {
-   	 FuncSig funcSig;
-   	 void* obj;
-   	};
+      FuncSig funcSig;
+      void* obj;
+   };
 
    virtual ~ILibraryLoader()
-   {}
+   {
+   }
 
    class LibraryRef
    {
    public:
       virtual ~LibraryRef()
-      {}
+      {
+      }
 
       virtual Alias symbol(const char* name) = 0;
    };
 
    virtual std::unique_ptr<ILibraryLoader::LibraryRef> library(std::initializer_list<const char*> names) = 0;
 };
-
 }

@@ -25,9 +25,9 @@ public:
       HMODULE mHandle;
 
    public:
-      explicit LibraryRef(HMODULE handle)
-       : mHandle(handle)
-      {}
+      explicit LibraryRef(HMODULE handle) : mHandle(handle)
+      {
+      }
 
       ~LibraryRef()
       {
@@ -36,9 +36,9 @@ public:
 
       Alias symbol(const char* name) override
       {
-      	 Alias res;
-      	 res.funcSig = ::GetProcAddress(mHandle, name);
-         if(res.obj == nullptr)
+         Alias res;
+         res.funcSig = ::GetProcAddress(mHandle, name);
+         if (res.obj == nullptr)
             throw std::runtime_error("Failed to load symbol");
          return res;
       }
@@ -48,19 +48,17 @@ public:
    {
       HMODULE handle = nullptr;
 
-      for(auto name : names)
+      for (auto name : names)
       {
-      	handle = moduleByName(name);
-        if(handle)
-        	break;
+         handle = moduleByName(name);
+         if (handle)
+            break;
       }
 
-      if(handle == nullptr)
+      if (handle == nullptr)
          throw std::runtime_error("Failed to load library");
 
       return std::make_unique<LibraryRef>(handle);
    }
-
 };
-
 }
