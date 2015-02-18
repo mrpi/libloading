@@ -2,7 +2,7 @@
 Simple and portable dynamic library loading in C++
 
 This header-only library eases the loading of DLLs/Shared-Object-Files.
-So that you don't have to deal with dlopen/dlsym/dlclose on Posix or LoadLibrary/GetProcAddres/FreeLibrary on Win32.
+So that you don't have to deal with platform specifica like dlopen, dlsym and dlclose on Posix or LoadLibrary, GetProcAddres and FreeLibrary on Win32.
 
 ## Examples
 
