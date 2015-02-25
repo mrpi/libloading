@@ -30,9 +30,9 @@ public:
       void* mHandle;
 
    public:
-      explicit LibraryRef(void* handle)
-       : mHandle(handle)
-      {}
+      explicit LibraryRef(void* handle) : mHandle(handle)
+      {
+      }
 
       ~LibraryRef()
       {
@@ -43,7 +43,7 @@ public:
       {
          Alias res;
          res.obj = ::dlsym(mHandle, name);
-         if(res.obj == nullptr)
+         if (res.obj == nullptr)
             throw std::runtime_error(::dlerror());
          return res;
       }
@@ -53,19 +53,17 @@ public:
    {
       void* handle = nullptr;
 
-      for(auto name : names)
+      for (auto name : names)
       {
-      	handle = moduleByName(name);
-        if(handle)
-        	break;
+         handle = moduleByName(name);
+         if (handle)
+            break;
       }
 
-      if(handle == nullptr)
+      if (handle == nullptr)
          throw std::runtime_error("Failed to load library");
 
       return std::make_unique<LibraryRef>(handle);
    }
-
 };
-
 }
