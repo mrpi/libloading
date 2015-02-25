@@ -7,7 +7,7 @@
 namespace libloading
 {
 
-std::unique_ptr<ILibraryLoader> dynamicLibraryLoader()
+inline std::unique_ptr<ILibraryLoader> dynamicLibraryLoader()
 {
    return std::make_unique<Win32LibraryLoader>();
 }
@@ -21,7 +21,7 @@ std::unique_ptr<ILibraryLoader> dynamicLibraryLoader()
 namespace libloading
 {
 
-std::unique_ptr<ILibraryLoader> dynamicLibraryLoader()
+inline std::unique_ptr<ILibraryLoader> dynamicLibraryLoader()
 {
    return std::make_unique<PosixLibraryLoader>();
 }
