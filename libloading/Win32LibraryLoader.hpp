@@ -15,7 +15,7 @@ private:
    {
       std::string libName = std::string(name) + ".dll";
 
-      return ::LoadLibrary(libName.c_str());
+      return ::LoadLibraryA(libName.c_str());
    }
 
 public:
